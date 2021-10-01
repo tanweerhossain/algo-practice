@@ -24,6 +24,19 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+/** Solution 1: O(m + n) */
+function weave(sourceOne, sourceTwo) {
+  let queue = new Queue();
+
+  while (sourceOne.peek() && sourceTwo.peek()) {
+    queue.add(sourceOne.remove());
+    queue.add(sourceTwo.remove());
+  }
+
+  while (sourceOne.peek()) queue.add(sourceOne.remove());
+  while (sourceTwo.peek()) queue.add(sourceTwo.remove());
+
+  return queue;
+}
 
 module.exports = weave;

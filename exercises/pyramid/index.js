@@ -14,7 +14,7 @@
 //       ' ### '
 //       '#####'
 
-/** Solution 1: O(n) */
+/** Solution 1: O(n^2) */
 // function pyramid(n) {
 //   for (let i = 1; i <= n; i++) {
 //     console.log(`${Array(n - i).fill(' ').join('')}${Array(2*i-1).fill('#').join('')}${Array(n - i).fill(' ').join('')}`)
@@ -22,7 +22,7 @@
 // }
 
 
-/** Solution 2: O(n) */
+/** Solution 2: O(n^2) */
 function pyramid(n, k = 0) {
   if (!n) return;
   

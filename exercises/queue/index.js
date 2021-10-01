@@ -8,6 +8,15 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+class Queue {
+  #pool = [];
+
+  add(element) {
+    this.#pool.push(element);
+  }
+  remove() {
+    return this.#pool.shift(1);
+  }
+}
 
 module.exports = Queue;

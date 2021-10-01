@@ -12,6 +12,27 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+/** Solution 1: O(3n) ~ O(n) */
+// function midpoint(list) {
+//   const listLength = list.size();
+//   if (listLength%2 === 0) {
+//     return list.getAt(((listLength||2) - 2)/2);
+//   } else {
+//     return list.getAt((listLength - 1)/2);
+//   }
+// }
+
+/** Solution 2: O(n/2) ~ O(n) */
+function midpoint(list) {
+  let fastPtr = list.getFirst();
+  let slowPtr = list.getFirst();
+
+  while (fastPtr && fastPtr.next && fastPtr.next.next) {
+    slowPtr = slowPtr.next;
+    fastPtr = fastPtr.next.next;
+  }
+
+  return slowPtr;
+}
 
 module.exports = midpoint;
