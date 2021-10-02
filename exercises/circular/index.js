@@ -1,3 +1,4 @@
+
 // --- Directions
 // Given a linked list, return true if the list
 // is circular, false if it is not.
@@ -12,6 +13,17 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+function circular(list) {
+    let slowPtr = list.getFirst();
+    let fastPtr = list.getFirst();
+
+    while (fastPtr && fastPtr.next && fastPtr.next.next) {
+        slowPtr = slowPtr.next;
+        fastPtr = fastPtr.next.next;
+        if (slowPtr === fastPtr) return true;
+    }
+
+    return false;
+}
 
 module.exports = circular;
