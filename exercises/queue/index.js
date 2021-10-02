@@ -17,6 +17,9 @@ class Queue {
   remove() {
     return this.#pool.shift(1);
   }
+  isEmpty() {
+    return !!this.#pool.length;
+  }
 }
 
 module.exports = Queue;
