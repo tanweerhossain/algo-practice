@@ -12,8 +12,8 @@ function validate(node, min = null, max = null) {
   } else return true;
   
   if (!(min < node.data && (max > node.data))) return false;
-  return validate(node.left, min, node.data) && validate(node.right, node.data, max);
 
+  return validate(node.left, min, node.data) && validate(node.right, node.data, max);
 }
 
 module.exports = validate;
