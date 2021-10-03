@@ -45,26 +45,42 @@ function mergeSort(arr) {
   return merge(leftSubArray, rightSubArray);
 }
 
-function merge(left, right) {
-  let leftPtr = 0;
-  let rightPtr = 0;
-  const mergedList = [];
+/** Solution 1 */
+// function merge(left, right) {
+//   let leftPtr = 0;
+//   let rightPtr = 0;
+//   const mergedList = [];
 
-  while(leftPtr < left.length || rightPtr < right.length) {
-    if (leftPtr < left.length && rightPtr < right.length) {
-      mergedList.push(
-        (left[leftPtr] < right[rightPtr])
-          ? left[leftPtr++]
-          : right[rightPtr++]
-      );
-    } else if (leftPtr < left.length) {
-      mergedList.push(left[leftPtr++]);
-    } else if (rightPtr < right.length) {
-      mergedList.push(right[rightPtr++]);
+//   while(leftPtr < left.length || rightPtr < right.length) {
+//     if (leftPtr < left.length && rightPtr < right.length) {
+//       mergedList.push(
+//         (left[leftPtr] < right[rightPtr])
+//           ? left[leftPtr++]
+//           : right[rightPtr++]
+//       );
+//     } else if (leftPtr < left.length) {
+//       mergedList.push(left[leftPtr++]);
+//     } else if (rightPtr < right.length) {
+//       mergedList.push(right[rightPtr++]);
+//     }
+//   }
+
+//   return mergedList;
+// }
+
+/** Solution 2 */
+function merge(left, right) {
+  const results = [];
+
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      results.push(left.shift());
+    } else {
+      results.push(right.shift());
     }
   }
 
-  return mergedList;
+  return [...results, ...left, ...right];
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
