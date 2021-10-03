@@ -10,6 +10,7 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 const Queue = require('../queue');
+const Stack = require('../stack');
 class Node {
   constructor(data, ...children) {
     this.data = data;
@@ -30,13 +31,31 @@ class Tree {
     this.root = null;
   }
 
+  /** Solution 1 */
+  // traverseDF(fn) {
+  //   if (this instanceof Tree) {
+  //     Tree.prototype.traverseDF.call(this.root, fn);
+  //   } else if (this instanceof Node) {
+  //     fn(this);
+  //     for (const node of this.children) {
+  //       Tree.prototype.traverseDF.call(node, fn)
+  //     }
+  //   }
+  // }
+
+  /** Solution 2 */
   traverseDF(fn) {
-    if (this instanceof Tree) {
-      Tree.prototype.traverseDF.call(this.root, fn);
-    } else if (this instanceof Node) {
-      fn(this);
-      for (const node of this.children) {
-        Tree.prototype.traverseDF.call(node, fn)
+    const stack = new Stack();
+
+    if (!this.root) return;
+
+    stack.push(this.root);
+
+    while (stack.peek()) {
+      const node = stack.pop();
+      fn(node);
+      for (const child of Array.prototype.reverse.call(node.children)) {
+        stack.push(child);
       }
     }
   }

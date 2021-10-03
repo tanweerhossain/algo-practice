@@ -9,16 +9,20 @@
 //     q.remove(); // returns 1;
 
 class Queue {
-  #pool = [];
-
+  constructor() {
+    this.pool = [];
+  }
   add(element) {
-    this.#pool.push(element);
+    this.pool.push(element);
   }
   remove() {
-    return this.#pool.shift(1);
+    return this.pool.shift(1);
   }
   isEmpty() {
-    return !!this.#pool.length;
+    return !!this.pool.length;
+  }
+  size() {
+    return this.pool.length;
   }
 }
 
