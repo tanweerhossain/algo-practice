@@ -4,3 +4,6 @@ Companion repo to [The Coding Inteview Bootcamp: Algorithms + Data Structures](h
 
 ## Notes
 File [Link](./NOTES.md)
+
+## C-programming
+Repo [Link](https://github.com/tanweerhossain/algo-c-practice)
